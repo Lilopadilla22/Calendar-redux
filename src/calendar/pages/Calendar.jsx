@@ -9,6 +9,7 @@ import { CalendarModal } from '../components/CalendarModal'
 import { useUiStore } from '../../hooks/useUiStore'
 import { useCalendarStore } from '../../hooks/useCalendarStore'
 import { FabAddNew } from '../components/FabAddNew'
+import { DeleteNote } from '../components/DeleteNote'
 
 export const CalendarPage = () => {
 
@@ -72,6 +73,7 @@ export const CalendarPage = () => {
         />
         <CalendarModal/>
         <FabAddNew/>
+        <DeleteNote/>
       </div>
     </>
   )

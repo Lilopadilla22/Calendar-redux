@@ -123,7 +123,6 @@ export const CalendarModal = () => {
                     locale='es'
                     timeCaption='Hora'
                 />
-                <input className="form-control" placeholder="Fecha inicio" />
             </div>
 
             <div className="form-group mb-2">
@@ -138,10 +137,7 @@ export const CalendarModal = () => {
                     locale='es'
                     timeCaption='Hora'
                 />
-                <input className="form-control" placeholder="Fecha inicio" />
             </div>
-
-            <hr />
             <div className="form-group mb-2">
                 <label>Titulo y notas</label>
                 <input 
