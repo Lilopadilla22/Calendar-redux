@@ -7,7 +7,7 @@ export const uiSlice = createSlice({
     initialState: {
         isDateModalOpen: false
     },
-    reducer: {
+    reducers: {
         onOpenDateModal: (state) => {
             state.isDateModalOpen = true 
         },
