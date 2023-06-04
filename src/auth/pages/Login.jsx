@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useEffect } from 'react'
 import './login.css';
 import { useForm } from '../../hooks/useForm';
+import { useAuthStore } from '../../hooks/useAuthStore';
+import Swal from 'sweetalert2';
 
 const loginFormFields = {
     loginEmail: "",
@@ -17,19 +19,31 @@ const registerFormFields = {
 
 export const Login = () => {
 
+    const {startLogin, errorMessage, startRegister} =useAuthStore()
+
     const { loginEmail, loginPassword, onInputChange: onLoginInputchange } = useForm(loginFormFields)
     const { registerName, registerEmail, registerPassword, registerPassword2, onInputChange: onRegisterInputChange } = useForm(registerFormFields)
 
     const loginSubmit = (event) => {
         event.preventDefault()
-        console.log({ loginEmail, loginPassword })
+        startLogin({email: loginEmail, password: loginPassword })
     }
 
     const registerSubmit = (event) => {
         event.preventDefault()
+        if(registerPassword !== registerPassword2) {
+            Swal.fire('Las constaseñas no coinciden', errorMessage, 'error')
+        }
         console.log({ registerName, registerEmail, registerPassword, registerPassword2 })
+        startRegister({name: registerName, email: registerEmail, password: registerPassword})
     }
 
+    useEffect(() => {
+      if(errorMessage !== undefined) {
+        Swal.fire('Error en la autenticacion', 'error en el registro', 'error')
+      }    
+    }, [errorMessage])
+    
     return (
         <div className="container login-container">
             <div className="row">
