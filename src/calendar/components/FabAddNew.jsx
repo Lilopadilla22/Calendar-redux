@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useUiStore } from '../../hooks/useUiStore'
 import { useCalendarStore } from '../../hooks/useCalendarStore'
 import { addHours } from 'date-fns'
@@ -17,7 +15,7 @@ export const FabAddNew = () => {
             end: addHours(new Date(), 2),
             bgColor: 'green',
             user: {
-              _id: '123', 
+              id: '123', 
               name: 'Lilia'
             }
         })
