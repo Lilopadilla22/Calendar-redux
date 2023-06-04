@@ -34,7 +34,8 @@ export const useAuthStore = () => {
       dispatch(onLogin({ name: data.name, uid: data.uid }))
 
     } catch (error) {
-      dispatch(onLogout(error.response.data?.msg || '----'))
+      console.log({error})
+      dispatch(onLogout(error.response.data?.msg || 'usuario ya existe'))
       setTimeout(() => {
         dispatch(clearErrorMessage())
       }, 100);
@@ -61,6 +62,11 @@ export const useAuthStore = () => {
     }
   }
 
+  const startLogout = () => {
+    localStorage.clear()
+    dispatch(onLogout())
+  }
 
-  return { status, user, errorMessage, startLogin, startRegister, checkAuthToken }
+
+  return { status, user, errorMessage, startLogin, startRegister, checkAuthToken, startLogout }
 }

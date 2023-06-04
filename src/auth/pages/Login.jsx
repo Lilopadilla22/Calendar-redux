@@ -30,17 +30,17 @@ export const Login = () => {
     }
 
     const registerSubmit = (event) => {
-        event.preventDefault()
-        if(registerPassword !== registerPassword2) {
-            Swal.fire('Las constaseñas no coinciden', errorMessage, 'error')
+        event.preventDefault();
+        if ( registerPassword !== registerPassword2 ) {
+            Swal.fire(errorMessage, 'Contraseñas no son iguales', 'error');
+            return;
         }
-        console.log({ registerName, registerEmail, registerPassword, registerPassword2 })
-        startRegister({name: registerName, email: registerEmail, password: registerPassword})
+        startRegister({ name: registerName, email: registerEmail, password: registerPassword });
     }
 
     useEffect(() => {
       if(errorMessage !== undefined) {
-        Swal.fire('Error en la autenticacion', 'error en el registro', 'error')
+        Swal.fire('Error en la autenticacion', errorMessage, 'error')
       }    
     }, [errorMessage])
     

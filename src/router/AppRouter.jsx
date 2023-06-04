@@ -11,7 +11,7 @@ export const AppRouter = () => {
 
     useEffect(() => {
         checkAuthToken()
-    }, [checkAuthToken])    
+    }, [])    
 
     if(status === 'checking') {
         return (
@@ -34,7 +34,7 @@ export const AppRouter = () => {
                     (
                         <>
                             <Route path='/' element={<CalendarPage/>} />
-                            <Route path='/*' element={<Navigate to='/auth/login' />} />
+                            <Route path='/*' element={<Navigate to='/' />} />
                         </>
                     )
             }       
