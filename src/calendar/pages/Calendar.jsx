@@ -17,7 +17,7 @@ export const CalendarPage = () => {
   const {events, setActiveEvent, startLoadingEvents} = useCalendarStore()
   const [lasView, setLasView] = useState(localStorage.getItem('lastView') || 'week')
 
-  const eventStyleGetter = (event, start, end, isSelected) => {
+  const eventStyleGetter = () => {
     const style = {
       backgroundColor: 'pink',
       boderRadius: '0px',
