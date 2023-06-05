@@ -10,16 +10,22 @@ import { useUiStore } from '../../hooks/useUiStore'
 import { useCalendarStore } from '../../hooks/useCalendarStore'
 import { FabAddNew } from '../components/FabAddNew'
 import { DeleteNote } from '../components/DeleteNote'
+import { useAuthStore } from '../../hooks/useAuthStore'
 
 export const CalendarPage = () => {
 
   const {openDateModal } = useUiStore()
   const {events, setActiveEvent, startLoadingEvents} = useCalendarStore()
   const [lasView, setLasView] = useState(localStorage.getItem('lastView') || 'week')
+  const {user} =useAuthStore()
 
-  const eventStyleGetter = () => {
+  const eventStyleGetter = (event) => {
+
+    const isMyEvents = (user.uid === event.user)
+
+    console.log(event)
     const style = {
-      backgroundColor: 'pink',
+      backgroundColor: isMyEvents ? 'pink' : 'green',
       boderRadius: '0px',
       opacity: 0.8,
       color: 'white'
